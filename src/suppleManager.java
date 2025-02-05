@@ -1,8 +1,9 @@
 import java.util.*;
 
+// Класс, управляющий поставками
 class SupplyManager {
-    private List<Supplier> suppliers = new ArrayList<>();
-    private List<Product> products = new ArrayList<>();
+    private List<Supplier> suppliers = new ArrayList<>(); // Список поставщиков
+    private List<Product> products = new ArrayList<>(); // Список продуктов
 
     // Добавляет поставщика в список поставщиков
     public void addSupplier(Supplier supplier) {
@@ -52,8 +53,8 @@ class SupplyManager {
     }
 
     // Возвращает общее количество поставок для продукта
-    public HashMap<Object, Object> getTotalSuppliesForProduct(String productId) {
-        HashMap<Object, Object> totalSupplies = new HashMap<>();
+    public HashMap<String, Integer> getTotalSuppliesForProduct(String productId) {
+        HashMap<String, Integer> totalSupplies = new HashMap<>();
         for (Supplier supplier : suppliers) {
             int quantity = supplier.getSupplies().getOrDefault(productId, 0);
             if (quantity > 0) {
@@ -62,7 +63,6 @@ class SupplyManager {
         }
         return totalSupplies;
     }
-
     // Возвращает список поставщиков для продукта
     public List<String> getSuppliersForProduct(String productId) {
         List<String> supplierNames = new ArrayList<>();
